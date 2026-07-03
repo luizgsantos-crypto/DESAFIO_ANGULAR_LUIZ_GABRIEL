@@ -1,0 +1,29 @@
+<div class="login-bg d-flex justify-content-center align-items-center vh-100">
+  <div class="card shadow p-4 text-center" style="width: 25rem; border-radius: 10px;">
+    
+    <h2 class="mb-1" style="color: var(--ford-blue); font-weight: bold;">FORD SISTEMAS</h2>
+    <p class="text-muted mb-4" style="font-size: 0.9rem;">Painel de Gestão Estratégica</p>
+
+    <form (ngSubmit)="acessarDashboard()" #loginForm="ngForm">
+      
+      <div class="form-group text-start mb-3">
+        <label for="usuario" class="form-label" style="font-size: 0.9rem;">Usuário</label>
+        <input type="text" id="usuario" class="form-control" name="usuario" [(ngModel)]="usuario" required>
+      </div>
+
+      <div class="form-group text-start mb-4">
+        <label for="senha" class="form-label" style="font-size: 0.9rem;">Senha</label>
+        <input type="password" id="senha" class="form-control" name="senha" [(ngModel)]="senha" required>
+      </div>
+
+      <div *ngIf="erroLogin" class="alert alert-danger p-2 mb-3" style="font-size: 0.85rem;" role="alert">
+        Credenciais inválidas ou erro de conexão.<br>Tente novamente.
+      </div>
+
+      <button type="submit" class="btn btn-ford w-100" [disabled]="!loginForm.valid">
+        Acessar Dashboard
+      </button>
+
+    </form>
+  </div>
+</div>

@@ -1,0 +1,52 @@
+/* Variáveis de cor da Ford */
+$ford-blue: #003478;
+$ford-light-bg: #f8f9fa;
+
+.ford-navbar {
+  background-color: $ford-blue;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.title-ford {
+  color: $ford-blue;
+  font-weight: 700;
+  border-left: 5px solid $ford-blue;
+  padding-left: 10px;
+}
+
+.ford-card {
+  border: none;
+  border-radius: 12px;
+  overflow: hidden;
+  transition: all 0.3s ease-in-out;
+  background-color: #ffffff;
+  
+  &:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 20px rgba(0, 0, 0, 0.15) !important;
+    border-bottom: 4px solid $ford-blue;
+  }
+
+  .img-container {
+    height: 180px;
+    background-color: $ford-light-bg;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 1px solid #eeeeee;
+
+    img {
+      max-height: 100%;
+      object-fit: contain;
+      transition: transform 0.3s ease;
+      
+      &:hover {
+        transform: scale(1.05);
+      }
+    }
+  }
+
+  .details-text {
+    font-size: 0.95rem;
+  }
+}

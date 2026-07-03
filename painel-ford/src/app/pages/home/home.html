@@ -1,0 +1,65 @@
+<nav class="navbar ford-navbar px-4 py-3">
+  <div class="container-fluid d-flex justify-content-between align-items-center">
+    <span class="navbar-brand text-white fw-bold mb-0 h1">FORD SISTEMAS</span>
+    <div class="text-white">
+      <span class="me-4">Olá, <b>{{ nomeUsuario }}</b></span>
+      <button class="btn btn-outline-light btn-sm px-3" (click)="sair()">Sair</button>
+    </div>
+  </div>
+</nav>
+
+<div class="container mt-5">
+  <h3 class="mb-4 title-ford">Painel de Gestão - Frota Conectada</h3>
+  
+  <div class="row g-4">
+    @for (v of veiculos; track v.id) {
+      <div class="col-12 col-md-6 col-lg-3">
+        <div class="card ford-card h-100 shadow-sm" (click)="verDetalhes(v.id)" style="cursor: pointer;">
+          <div class="img-container">
+            <img [src]="v.img" class="card-img-top p-3" alt="{{ v.vehicle }}">
+          </div>
+          <div class="card-body">
+            <h5 class="card-title text-center fw-bold text-uppercase">{{ v.vehicle }}</h5>
+            <p class="text-center text-primary small">Clique para ver telemetria</p>
+          </div>
+        </div>
+      </div>
+    }
+  </div>
+
+  @if (detalhesVeiculo) {
+    <div class="row mt-5 animate-fade-in">
+      <div class="col-12">
+        <div class="card border-primary shadow-lg p-4 bg-light">
+          <div class="d-flex justify-content-between align-items-center mb-3">
+            <h4 class="fw-bold text-ford mb-0">Status em Tempo Real: {{ detalhesVeiculo.nome }}</h4>
+            <span class="badge" [ngClass]="detalhesVeiculo.status === 'on' ? 'bg-success' : 'bg-danger'">
+              {{ detalhesVeiculo.status === 'on' ? 'VEÍCULO LIGADO' : 'VEÍCULO DESLIGADO' }}
+            </span>
+          </div>
+          
+          <div class="row text-center">
+            <div class="col-md-4">
+              <p class="text-muted mb-1">Nível de Combustível</p>
+              <div class="progress" style="height: 25px;">
+                <div class="progress-bar progress-bar-striped progress-bar-animated" 
+                     [style.width]="detalhesVeiculo.nivelCombustivel + '%'"
+                     [ngClass]="detalhesVeiculo.nivelCombustivel < 20 ? 'bg-danger' : 'bg-success'">
+                  {{ detalhesVeiculo.nivelCombustivel }}%
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4 border-start">
+              <p class="text-muted mb-1">Hodômetro</p>
+              <h3 class="fw-bold">{{ detalhesVeiculo.odometro | number }} KM</h3>
+            </div>
+            <div class="col-md-4 border-start">
+              <p class="text-muted mb-1">Localização (Lat/Long)</p>
+              <p class="fw-medium">{{ detalhesVeiculo.lat }}, {{ detalhesVeiculo.long }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  }
+</div>

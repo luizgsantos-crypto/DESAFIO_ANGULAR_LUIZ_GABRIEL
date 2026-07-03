@@ -1,0 +1,27 @@
+:root {
+  --ford-blue: #003478;
+  --ford-light-bg: #F4F6F9;
+  --ford-text: #333333;
+}
+
+body {
+  background-color: var(--ford-light-bg);
+  font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  color: var(--ford-text);
+  margin: 0;
+  padding: 0;
+}
+
+/* Estilização customizada de botões para manter o padrão */
+.btn-ford {
+  background-color: var(--ford-blue);
+  color: white;
+  border: none;
+  transition: all 0.3s ease;
+
+  &:hover {
+    background-color: #002255;
+    color: white;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  }
+}
